@@ -17,8 +17,12 @@
 	 	// ll.display();
 	 	// cout<<ll.modData()<<endl;
 	 	// cout<<ll.kThFromLast(5);
-	 	ll.fold();
+	 	// ll.fold();
+
+	 	cout<<ll.Size()<<endl;
+	 	ll.kReverse(3);
 	 	ll.display();	
+	 	cout<<ll.Size()<<endl;
 	 	//cout<<endl<<ll.Size()<<endl;
 	 }catch(int x){
 	 	cout<<"INVALID INDEX "<<x<<endl;

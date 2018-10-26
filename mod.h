@@ -106,6 +106,9 @@ public:
 
 		}
 	}
+	int setSize(int value){
+		this->size+=value;
+	}
 
 	int removeFirst(){
 		if(this->head==NULL){
@@ -182,6 +185,9 @@ public:
 
 	void reverseDR(){
 		reverseDR(this->head,this->head,0);
+	}
+	bool isEmpty(){
+		return this->size==0;
 	}
 private:
 	Node* reverseDR(Node* left,Node* right,int count){
@@ -281,5 +287,30 @@ public:
 		heapMover *mover=new heapMover();
 		mover->left=this->head;
 		fold(mover,this->head,0);
+	}
+
+
+	void kReverse(int k){
+		LinkedList rl;
+		while(!this->isEmpty()){
+			LinkedList nl;
+			for (int i = 0; i < k && !this->isEmpty(); ++i)
+			{
+				nl.addFirst(this->removeFirst());
+			}
+
+			if(rl.head==NULL){
+				rl=nl;
+			}else{
+				rl.tail->next=nl.head;
+				rl.tail=nl.tail;
+				// rl.size+=nl.size;
+				//nl=new LinkedList();
+				rl.setSize(nl.Size());
+			}
+		}
+		this->head=rl.head;
+		this->size=rl.size;
+		this->tail=rl.tail;
 	}
 };
