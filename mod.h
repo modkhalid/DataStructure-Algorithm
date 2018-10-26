@@ -11,13 +11,16 @@ public:
 	}
 };
 class heapMover{
-	Node *left;
-}
+		public:
+			Node *left;
+};
+
 class LinkedList
 {
 
 	Node *head,*tail;
 	int size;
+
 
 public:
 	LinkedList(){
@@ -200,8 +203,11 @@ private:
 		}
 		reverseDRH(mover,right->next,count+1);
 		if(count>=this->size/2){
-			
+			int data=mover->left->data;
+			mover->left->data=right->data;
+			right->data=data;
 		}
+		mover->left=mover->left->next;
 	}
 	void reversePR(Node* prev,Node* curr){
 		if(curr==NULL){
@@ -209,6 +215,23 @@ private:
 		}
 		reversePR(curr,curr->next);
 		curr->next=prev;
+	}
+
+	void fold(heapMover *mover,Node* right,int count){
+		if(right==NULL){
+			return;
+		}
+
+		fold(mover,right->next,count+1);
+		if(count>this->size/2){
+			Node* temp=mover->left->next;
+			mover->left->next=right;
+			right->next=temp;
+			mover->left=temp;
+		}else if(count==this->size/2){
+			this->tail=right;
+			this->tail->next=NULL;
+		}
 	}
 public:
 	void reversePR(){
@@ -221,8 +244,42 @@ public:
 	}
 
 	void reverseDRH(){
-		heapMover mover;
-		mover.left=this->head;
+		heapMover* mover;
+		mover=new heapMover();
+		mover->left=this->head;
 		reverseDRH(mover,this->head,0);
+	}
+
+	int modData(){
+		Node *n1=this->head;
+		Node *n2=this->head;
+		while(n2->next!=NULL && n2->next->next!=NULL){
+			n2=n2->next->next;
+			n1=n1->next;
+		}
+		return n1->data;
+	}
+
+	int kThFromLast(int k){
+		Node *n1=this->head;
+		Node *n2=this->head;
+		for (int i = 0; i < k; ++i)
+		{
+			if(n2==NULL){
+				throw k;
+			}
+			n2=n2->next;
+		}
+		while(n2!=NULL){
+			n2=n2->next;
+			n1=n1->next;
+		}
+		return n1->data;
+	}
+
+	void fold(){
+		heapMover *mover=new heapMover();
+		mover->left=this->head;
+		fold(mover,this->head,0);
 	}
 };
