@@ -9,7 +9,7 @@
 	 	ll.addLast(12);
 	 	ll.addLast(15);
 	 	ll.addLast(345);
-	 	cout<<endl;
+	 	// cout<<endl;
 	 	// ll.display();
 	 	// ll.reverseDR();
 	 	ll.display();
@@ -19,11 +19,15 @@
 	 	// cout<<ll.kThFromLast(5);
 	 	// ll.fold();
 
-	 	cout<<ll.Size()<<endl;
-	 	ll.kReverse(3);
-	 	ll.display();	
-	 	cout<<ll.Size()<<endl;
+	 	// cout<<ll.Size()<<endl;
+	 	// ll.kReverse(3);
+	 	// ll.display();	
+	 	// cout<<ll.Size()<<endl;
 	 	//cout<<endl<<ll.Size()<<endl;
+	 	ll.createLoop(5);
+	 	ll.detectAndremoveLoop();
+	 	ll.display();
+	 	// ll.display();
 	 }catch(int x){
 	 	cout<<"INVALID INDEX "<<x<<endl;
 	 }

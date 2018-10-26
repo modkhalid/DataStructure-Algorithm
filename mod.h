@@ -313,4 +313,40 @@ public:
 		this->size=rl.size;
 		this->tail=rl.tail;
 	}
+
+	void createLoop(int idx){
+		if(idx<0 || idx>=this->size){
+			throw 89;
+		}
+		Node *ptr=getNodeAt(idx);
+		this->tail->next=ptr;
+	}
+
+	// DECECT AND REMOVE LOOP FROM LINK LIST 
+	void detectAndremoveLoop(){
+		Node* slow=this->head,*fast=this->head;
+		while(true){
+			slow=slow->next;
+			fast=fast->next->next;
+			if(slow==fast){
+				break;
+			}
+		}
+		// Node *ptr;
+		// cout<<"oneloop";
+
+		slow=this->head;
+		while(slow!=fast){
+			slow=slow->next;
+			fast=fast->next;
+		}
+		// cout<<"Second loop";
+		// fast=fast->next;
+		while(fast->next!=slow){
+			fast=fast->next;
+		}
+		// cout<<"third loop";
+		fast->next=NULL;
+		this->tail=fast;
+	}
 };
