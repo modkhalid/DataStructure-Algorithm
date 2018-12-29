@@ -87,6 +87,27 @@ public:
 			return temp;
 		}
 	}
+
+	int getFirst(){
+		return this->head->data;
+	}
+
+	int getLast(){
+		return this->tail->data;
+	}
+
+	int getAt(int idx){
+		if(idx<0 || idx>=this->size){
+			throw idx;
+		}else{
+			Node* temp=this->head;
+			for (int i = 0; i < idx; ++i)
+			{
+				temp=temp->next;
+			}
+			return temp->data;
+		}
+	}
 	void addAt(int idx,int item){
 		if(idx<0 || idx>this->size){
 			throw idx;
@@ -348,5 +369,22 @@ public:
 		// cout<<"third loop";
 		fast->next=NULL;
 		this->tail=fast;
+	}
+
+	/*LinkedList sum(LinkedList second){
+		LinkedList ml;
+		Node *temp=this->head;
+		while()
+	}*/
+
+
+	arrangeOnNumber(int number){
+		Node *temp=this->head,*currTail=this->tail,*endTail=this->tail;
+		while(temp!=this->tail){
+			if(temp->data==number){
+				currTail->next=temp;
+			}
+			temp=temp->next;
+		}
 	}
 };
