@@ -31,10 +31,12 @@ public class LinkedListClient {
 		ll.addFirst(2);
 		ll.addFirst(1);
 		ll.addFirst(0);
+		ll.addLast(3);
 
 		ll.display();
 //		ll.kReverse(3);
 //		System.out.println(ll.kthFromLast(7));
+		System.out.println(ll.countOccurence(3));
 //		ll.removeKey(3);
 		ll.display();
 

@@ -273,6 +273,19 @@ public class LinkedList {
 	}
 
 
+	public int countOccurence(int key) {
+		Node temp=this.head;
+		int count=0;
+		while(temp!=null) {
+			if(temp.data==key) {
+				count++;
+			}
+			temp=temp.next;
+		}
+		return count;
+	}
+
+
 	boolean isEmpty() {
 		return this.size==0;
 	}
