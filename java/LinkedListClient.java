@@ -31,7 +31,7 @@ public class LinkedListClient {
 		ll.addFirst(2);
 		ll.addFirst(1);
 		ll.addFirst(0);
-		
+
 		ll.display();
 		ll.kReverse(3);
 		ll.display();
