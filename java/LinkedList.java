@@ -286,6 +286,44 @@ public class LinkedList {
 	}
 
 
+	void CreateLoop(int idx) throws Exception {
+		if(idx<0 && idx>=this.size) {
+			throw new Exception("Invalid Index in GetNodeAt("+idx+")");
+		}
+		this.tail.next=getNodeAt(idx);
+
+	}
+
+	void DetectAndRemoveLoop() {
+		Node slow=this.head;
+		Node fast=this.head;
+//		finding the middle node in the loop
+//		Ex. 1-2-3-4-5-6-7-8-then 4
+//		ans is 6
+		while(true) {
+			slow=slow.next;
+			fast=fast.next.next;
+			if(slow==fast) {
+				break;
+			}
+		}
+//		System.out.println(fast.data+"  "+slow.data);
+//		will get 4
+		slow=this.head;
+		while(slow!=fast) {
+			slow=slow.next;
+			fast=fast.next;
+		}
+//		System.out.println("L2");
+		while(fast.next!=slow) {
+			fast=fast.next;
+		}
+//		System.out.println("L3");
+		fast.next=null;
+		this.tail=fast;
+
+	}
+
 	boolean isEmpty() {
 		return this.size==0;
 	}
@@ -324,7 +362,4 @@ public class LinkedList {
 		}
 		System.out.println();
 	}
-
-
 }
-// Write a function that counts the number of times a given int occurs in a Linked List
