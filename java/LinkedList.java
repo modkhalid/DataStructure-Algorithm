@@ -259,6 +259,19 @@ public class LinkedList {
 		this.size=ml.size;
 	}
 
+	public int kthFromLast(int k) {
+		Node slow=this.head;
+		Node fast=this.head;
+		for (int i = 0; i < k; i++) {
+			fast=fast.next;
+		}
+		while(fast!=null) {
+			fast=fast.next;
+			slow=slow.next;
+		}
+		return slow.data;
+	}
+
 
 	boolean isEmpty() {
 		return this.size==0;
