@@ -11,21 +11,21 @@ class Node{
 public class LinkedList {
 	private Node head,tail;
 	private int size;
-	
+
 //	constructor
 	public LinkedList() {
 		this.tail=null;
 		this.head=null;
 		this.size=0;
 	}
-	
+
 	class HeapMover{
 		Node left;
 		public HeapMover(Node node) {
 			this.left=node;
 		}
 	}
-	
+
 //	add first method
 	public void addFirst(int data) {
 		Node nn=new Node(data);
@@ -39,7 +39,7 @@ public class LinkedList {
 			this.size++;
 		}
 	}
-	
+
 //	add last method O(1)
 	void addLast(int data) {
 		Node nn=new Node(data);
@@ -52,7 +52,7 @@ public class LinkedList {
 		}
 		this.size++;
 	}
-	
+
 	public Node getNodeAt(int idx) throws Exception{
 		if(idx<0 && idx>=this.size) {
 			throw new Exception("Invalid Index in GetNodeAt("+idx+")");
@@ -69,7 +69,7 @@ public class LinkedList {
 			return temp;
 		}
 	}
-	
+
 	public void addAt(int idx,int data) throws Exception {
 		if(idx==0) {
 			addFirst(data);
@@ -81,7 +81,7 @@ public class LinkedList {
 			nn.next=temp.next;
 			temp.next=nn;
 			this.size++;
-			
+
 		}
 	}
 //	o(1)
@@ -93,9 +93,9 @@ public class LinkedList {
 		this.head=this.head.next;
 		this.size--;
 		return temp;
-				
+
 	}
-	
+
 	public int removeLast() throws Exception {
 		if(this.size==0) {
 			throw new Exception("LinkedList is empty");
@@ -107,7 +107,7 @@ public class LinkedList {
 		this.size--;
 		return data;
 	}
-	
+
 	public int removeAt(int idx) throws Exception {
 		if(this.size==0) {
 			throw new Exception("LinkedList is empty");
@@ -124,6 +124,30 @@ public class LinkedList {
 			return data;
 		}
 	}
+
+
+	public void removeKey(int key) {
+		Node temp=this.head;
+		if(temp!=null && temp.data==key) {
+			this.head=temp.next;
+			return;
+		}
+		Node prev=null;
+
+		while(temp!=null && temp.data!=key) {
+			prev=temp;
+			temp=temp.next;
+		}
+
+		if(temp==null) {
+			return ;
+		}
+
+		prev.next=temp.next;
+	}
+
+
+
 	public void ReversePointerItr() {
 		Node curr=this.head;
 		Node prev=null,avail=null;
@@ -137,7 +161,7 @@ public class LinkedList {
 		this.tail=this.head;
 		this.head=avail;
 	}
-	
+
 	public void reverseDataItr() throws Exception {
 		Node last=null,first=null;
 		for (int i = 0; i < this.size/2; i++) {
@@ -148,11 +172,11 @@ public class LinkedList {
 			last.data=data;
 		}
 	}
-	
+
 	public void reverseDataRec() {
 		this.reverseDataRec(this.head,this.head,0);
 	}
-	
+
 	private Node reverseDataRec(Node left, Node right,int count) {
 		if(right==null) {
 			return left;
@@ -164,9 +188,9 @@ public class LinkedList {
 			temp.data=data;
 		}
 		return temp.next;
-		
+
 	}
-	
+
 	public void reversePointerRec() {
 		this.reversePointerRec(this.head,this.head);
 		Node temp=this.head;
@@ -181,11 +205,11 @@ public class LinkedList {
 		}
 		this.reversePointerRec(curr,curr.next);
 		curr.next=prev;
-		
-		
-		
+
+
+
 	}
-	
+
 	public void reverseDataWithHeap() {
 		reverseDataWithHeap(new HeapMover(this.head),this.head,0);
 	}
@@ -200,9 +224,9 @@ public class LinkedList {
 			curr.data=heap.left.data;
 			heap.left.data=data;
 		}
-		heap.left=heap.left.next;	
+		heap.left=heap.left.next;
 	}
-	
+
 	public int MidNodeData() {
 		Node slow=this.head;
 		Node fast=this.head;
@@ -212,8 +236,8 @@ public class LinkedList {
 		}
 		return slow.data;
 	}
-	
-	
+
+
 	public void kReverse(int k) throws Exception {
 		LinkedList ml=new LinkedList();
 		while(!this.isEmpty()) {
@@ -234,13 +258,13 @@ public class LinkedList {
 		this.head=ml.head;
 		this.size=ml.size;
 	}
-	
-	
+
+
 	boolean isEmpty() {
 		return this.size==0;
 	}
-	 
-	
+
+
 	public void fold() {
 		fold(new HeapMover(this.head),this.head,0);
 	}
@@ -258,13 +282,13 @@ public class LinkedList {
 			this.tail=right;
 			this.tail.next=null;
 		}
-		
+
 	}
 
 	public int Size() {
 		return this.size;
 	}
-	
+
 	//	display function
 	public void display() {
 		Node temp=this.head;
@@ -274,13 +298,6 @@ public class LinkedList {
 		}
 		System.out.println();
 	}
-	
-	
+
+
 }
-
-
-
-
-
-
-
