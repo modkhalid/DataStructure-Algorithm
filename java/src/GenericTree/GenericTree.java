@@ -62,13 +62,20 @@ public class GenericTree {
 		}
 		return m;
 	}
-//	public boolean find(int data) {
-//		return find(this.root,data);
-//	}
-//	
-//	private boolean find(Node node, int data) {
-//		
-//	}
+	public boolean find(int data) {
+		return find(this.root,data);
+	}
+	
+	private boolean find(Node node, int data) {
+		if(node.data==data)
+			return true;
+		for(Node child:node.children) {
+			boolean temp=find(child,data);
+			if(temp)
+				return temp;
+		}
+		return false;
+	}
 	private void display(Node node) {
 		String str=node.data+" -> ";
 		for (int i = 0; i < node.children.size(); i++) {
