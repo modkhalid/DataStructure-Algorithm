@@ -332,6 +332,9 @@ public class LinkedList {
 	
 	public void removeDuplicatesFromSortedLinkedList() {
 		Node temp=this.head;
+		if(temp==null) {
+			return;
+		}
 		while(temp!=null && temp.next!=null) {
 			if(temp.data==temp.next.data) {
 				temp.next=temp.next.next;
@@ -341,22 +344,27 @@ public class LinkedList {
 	}
 	
 	
+//remove duplicates from linkedlist recursive approach
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void remDFSLLRec() {
+		remDFSLLRec(this.head);
+	}
 
+	private void remDFSLLRec(Node head) {
+		if(head==null || head.next==null) {
+			return;
+		}
+		if(head.data==head.next.data) {
+			head.next=head.next.next;
+			remDFSLLRec(head);
+		}else {
+			this.remDFSLLRec(head.next);
+		}
+	}
+
+	
+	
+	
 	boolean isEmpty() {
 		return this.size==0;
 	}

@@ -44,8 +44,11 @@ public class LinkedListClient {
 //		ll.removeKey(3);
 //		ll.display();
 		ll.addAt(2, 2);
+		ll.addAt(2, 2);
+		ll.addLast(6);
 		ll.display();
-		ll.removeDuplicatesFromSortedLinkedList();
+//		ll.removeDuplicatesFromSortedLinkedList();
+		ll.remDFSLLRec();
 		ll.display();
 
 	}
