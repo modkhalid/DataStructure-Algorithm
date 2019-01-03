@@ -326,6 +326,36 @@ public class LinkedList {
 		this.tail=fast;
 
 	}
+	
+	
+//	remove duplicates
+	
+	public void removeDuplicatesFromSortedLinkedList() {
+		Node temp=this.head;
+		while(temp!=null && temp.next!=null) {
+			if(temp.data==temp.next.data) {
+				temp.next=temp.next.next;
+			}else
+				temp=temp.next;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	boolean isEmpty() {
 		return this.size==0;
@@ -365,4 +395,5 @@ public class LinkedList {
 		}
 		System.out.println();
 	}
+	
 }
