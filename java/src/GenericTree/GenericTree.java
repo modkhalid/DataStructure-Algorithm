@@ -37,7 +37,38 @@ public class GenericTree {
 		display(this.root);
 	}
 	
+	int Size() {
+		return Size(this.root);
+	}
 	
+	
+	private int Size(Node node) {
+		int res=0;
+		for(Node child:node.children) {
+			res+=Size(child);
+		}
+		return res+1;
+	}
+	
+	int max() {
+		return max(this.root);
+	}
+	private int max(Node node) {
+		int m=node.data;
+		for(Node child:node.children) {
+			int temp=max(child);
+			if(temp>=m)
+				m=temp;
+		}
+		return m;
+	}
+//	public boolean find(int data) {
+//		return find(this.root,data);
+//	}
+//	
+//	private boolean find(Node node, int data) {
+//		
+//	}
 	private void display(Node node) {
 		String str=node.data+" -> ";
 		for (int i = 0; i < node.children.size(); i++) {
@@ -49,10 +80,30 @@ public class GenericTree {
 		}
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 //		5 3 1 0 2 0 3 2 12 0 35 0
 		GenericTree g=new GenericTree();
 		g.display();
+		System.out.println(g.Size());
+		System.out.println(g.max());
 	}
 }
 
