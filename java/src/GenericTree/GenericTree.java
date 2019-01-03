@@ -31,8 +31,28 @@ public class GenericTree {
 		
 		return nn;
 	}
+	
+	
+	void display() {
+		display(this.root);
+	}
+	
+	
+	private void display(Node node) {
+		String str=node.data+" -> ";
+		for (int i = 0; i < node.children.size(); i++) {
+			str+=node.children.get(i).data+" , ";
+		}
+		System.out.println(str);
+		for (int i = 0; i < node.children.size(); i++) {
+			display(node.children.get(i));
+		}
+		
+	}
 	public static void main(String[] args) {
+//		5 3 1 0 2 0 3 2 12 0 35 0
 		GenericTree g=new GenericTree();
+		g.display();
 	}
 }
 
