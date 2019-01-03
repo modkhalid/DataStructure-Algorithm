@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GenericTree {
+	
 	private class Node{
 		int data;
 		ArrayList<Node> children=new ArrayList<>();
 	}
+	
 	Node root;
 	int size;
+	
 	public GenericTree() {
 		this.root=construct(new Scanner(System.in),null,-1);
 		
 	}
+
 	private Node construct(Scanner sc, Node node, int ith) {
 		if(node==null) {
 			System.out.println("Please enter the data for the root node");
@@ -32,7 +36,6 @@ public class GenericTree {
 		return nn;
 	}
 	
-	
 	void display() {
 		display(this.root);
 	}
@@ -40,7 +43,6 @@ public class GenericTree {
 	int Size() {
 		return Size(this.root);
 	}
-	
 	
 	private int Size(Node node) {
 		int res=0;
@@ -53,7 +55,9 @@ public class GenericTree {
 	int max() {
 		return max(this.root);
 	}
+	
 	private int max(Node node) {
+
 		int m=node.data;
 		for(Node child:node.children) {
 			int temp=max(child);
@@ -62,6 +66,7 @@ public class GenericTree {
 		}
 		return m;
 	}
+
 	public boolean find(int data) {
 		return find(this.root,data);
 	}
@@ -76,6 +81,37 @@ public class GenericTree {
 		}
 		return false;
 	}
+	
+	public int height() {
+		return height(this.root);
+	}
+	
+	private int height(Node node) {
+		int ht=-1;
+		for(Node child:node.children) {
+			int ch=height(child);
+			if(ch>ht)
+				ht=ch;
+		}
+		return ht+1;
+	}
+	
+	public void mirror() {
+		mirror(this.root);
+	}
+	private void mirror(Node node) {
+		for (int i = 0; i < node.children.size()/2; i++) {
+			Node temp1=node.children.get(i);
+			Node temp2=node.children.get(node.children.size()-1-i);
+			node.children.set(i, temp2);
+			node.children.set(node.children.size()-1-i, temp1);			
+		}
+		for(Node child:node.children) {
+			mirror(child);
+		}
+		
+	}
+
 	private void display(Node node) {
 		String str=node.data+" -> ";
 		for (int i = 0; i < node.children.size(); i++) {
@@ -99,7 +135,20 @@ public class GenericTree {
 	
 	
 	
-	
+	/*
+	 
+	 ||||||||||||||||||||
+	 ||                ||
+	 ||                ||
+	 ||                ||
+	 ||                ||
+	 ||      main      ||
+	 ||                ||
+	 ||                ||
+	 ||                ||
+	 ||||||||||||||||||||
+	 
+	 */
 	
 	
 	
@@ -109,23 +158,12 @@ public class GenericTree {
 //		5 3 1 0 2 0 3 2 12 0 35 0
 		GenericTree g=new GenericTree();
 		g.display();
-		System.out.println(g.Size());
-		System.out.println(g.max());
+//		System.out.println(g.Size());
+//		System.out.println(g.max());
+//		System.out.println(g.find(35));
+//		System.out.println(g.find(36));
+//		System.out.println(g.height());
+		g.mirror();
+		g.display();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
