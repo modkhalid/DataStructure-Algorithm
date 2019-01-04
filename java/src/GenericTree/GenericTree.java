@@ -182,6 +182,33 @@ public class GenericTree {
 			}
 		}
 	}
+	
+	public void levelorderZZ() {
+		LinkedList<Node> queue=new LinkedList<>();
+		LinkedList<Node> stack=new LinkedList<>();
+		queue.addLast(this.root);
+		int count=0;
+		while(!queue.isEmpty()) {
+			Node rm=queue.removeFirst();
+			System.out.print(rm.data+" ");
+			if(count%2==0) {
+				for(Node child:rm.children) {
+					stack.addFirst(child);
+				}
+			}else {
+				for(Node child:rm.children) {
+					stack.addLast(child);
+				}
+			}
+			if(queue.isEmpty()) {
+				count++;
+				System.out.println();
+				queue=stack;
+				stack=new LinkedList<>();
+				
+			}
+		}
+	}
 	private void display(Node node) {
 		String str=node.data+" -> ";
 		for (int i = 0; i < node.children.size(); i++) {
@@ -241,5 +268,7 @@ public class GenericTree {
 //		g.preorder();
 		
 //		g.levelorderLine();
+		g.levelorderZZ();
 	}
+	
 }
