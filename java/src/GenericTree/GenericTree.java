@@ -209,6 +209,30 @@ public class GenericTree {
 			}
 		}
 	}
+	class Mover{
+		int data=-1;
+		boolean flag=false;
+	}
+	public int predessor(int item) {
+		return predessor(this.root,new Mover(),item);
+	}
+	private int predessor(Node node, Mover mover, int item) {
+		int temp=mover.data;
+		if(node.data==item) {
+			mover.flag=true;
+			return temp;
+		}
+		mover.data=node.data;
+		for(Node child:node.children) {
+			temp=predessor(child,mover,item);
+			if(mover.flag) {
+				return temp;
+			}
+		}
+		
+		return -1;
+	}
+
 	private void display(Node node) {
 		String str=node.data+" -> ";
 		for (int i = 0; i < node.children.size(); i++) {
@@ -266,9 +290,10 @@ public class GenericTree {
 //		g2.display();
 //		System.out.println(g.structuallySimilar(g2));
 //		g.preorder();
-		
 //		g.levelorderLine();
-		g.levelorderZZ();
+//		g.levelorderZZ();
+//		10 3 20 2 50 0 60 2 100 0 71 1 140 0 30 1 200 0 40 3 70 0 1 2 80 0 130 0 40 0
+		System.out.println(g.predessor(60));
 	}
 	
 }
