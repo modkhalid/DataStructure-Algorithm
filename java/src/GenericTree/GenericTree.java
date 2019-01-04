@@ -141,7 +141,16 @@ public class GenericTree {
 			preorder(child);
 		}
 	}
-	
+	public void postorder() {
+		postorder(this.root);
+	}
+
+	private void postorder(Node node) {
+		for(Node child:node.children) {
+			preorder(child);
+		}
+		System.out.print(node.data+" ");
+	}
 
 	private void display(Node node) {
 		String str=node.data+" -> ";
