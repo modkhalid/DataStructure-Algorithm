@@ -1,6 +1,7 @@
 package GenericTree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class GenericTree {
@@ -151,6 +152,18 @@ public class GenericTree {
 		}
 		System.out.print(node.data+" ");
 	}
+	
+	public void levelorder() {
+		LinkedList<Node> queue=new LinkedList<>();
+		queue.addLast(this.root);
+		while(!queue.isEmpty()) {
+			Node temp=queue.removeFirst();
+			System.out.print(temp.data+" ");
+			for(Node child:temp.children) {
+				queue.addLast(child);
+			}
+		}
+	}
 
 	private void display(Node node) {
 		String str=node.data+" -> ";
@@ -208,6 +221,7 @@ public class GenericTree {
 //		GenericTree g2=new GenericTree();
 //		g2.display();
 //		System.out.println(g.structuallySimilar(g2));
-		g.preorder();
+//		g.preorder();
+		g.levelorder();
 	}
 }
