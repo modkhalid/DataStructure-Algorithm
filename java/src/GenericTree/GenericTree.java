@@ -112,6 +112,37 @@ public class GenericTree {
 		
 	}
 
+	
+	public boolean structuallySimilar(GenericTree gt) {
+		return structuallySimilar(this.root,gt.root);
+	}
+	
+	private boolean structuallySimilar(Node th, Node ot) {
+		if(th.children.size()!=ot.children.size()) {
+			return false;
+		}
+		boolean flag=true;
+		for(int i=0;i<th.children.size();i++) {
+			flag=structuallySimilar(th.children.get(i), ot.children.get(i));
+			if(!flag) {
+				return flag;
+			}
+		}
+		return flag;
+	}
+	
+	public void preorder() {
+		preorder(this.root);
+	}
+
+	private void preorder(Node node) {
+		System.out.print(node.data+" ");
+		for(Node child:node.children) {
+			preorder(child);
+		}
+	}
+	
+
 	private void display(Node node) {
 		String str=node.data+" -> ";
 		for (int i = 0; i < node.children.size(); i++) {
@@ -163,7 +194,11 @@ public class GenericTree {
 //		System.out.println(g.find(35));
 //		System.out.println(g.find(36));
 //		System.out.println(g.height());
-		g.mirror();
-		g.display();
+//		g.mirror();
+//		g.display();
+//		GenericTree g2=new GenericTree();
+//		g2.display();
+//		System.out.println(g.structuallySimilar(g2));
+		g.preorder();
 	}
 }
