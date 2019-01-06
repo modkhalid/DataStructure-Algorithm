@@ -232,6 +232,28 @@ public class GenericTree {
 		
 		return -1;
 	}
+	
+	public int succedor(int item) {
+		return succeder(this.root,new Mover(),item);
+	}
+
+	private int succeder(Node node, Mover mover, int item) {
+		if(mover.flag) {
+			return node.data;
+		}
+		if(node.data==item) {
+			mover.flag=true;
+		}
+		for(Node child:node.children) {
+			int temp=succeder(child, mover, item);
+			if(mover.flag) {
+				return temp;
+			}
+			
+		}
+		System.out.println(node.data+" here");
+		return -1;
+	}
 
 	private void display(Node node) {
 		String str=node.data+" -> ";
@@ -293,7 +315,8 @@ public class GenericTree {
 //		g.levelorderLine();
 //		g.levelorderZZ();
 //		10 3 20 2 50 0 60 2 100 0 71 1 140 0 30 1 200 0 40 3 70 0 1 2 80 0 130 0 40 0
-		System.out.println(g.predessor(60));
+//		System.out.println(g.predessor(60));
+		System.out.println(g.succedor(100));
 	}
 	
 }
