@@ -3,7 +3,9 @@ class Node:
         self.data=data
         self.next=None
 
-
+class Mover:
+    def __init__(self,node):
+        self.left=node
 class LinkedList:
     def __init__(self):
         self.head=None
@@ -138,9 +140,7 @@ class LinkedList:
         self.__reversePR(curr,curr.next)
         curr.next=prev
 
-    class Mover:
-        def __init__(self,node):
-            self.left=node
+
     def fold(self):
         self.__fold(Mover(self.head),self.head,0)
 
@@ -149,7 +149,14 @@ class LinkedList:
             return
         self.__fold(mover,right.next,count+1)
         if(count>self.size/2):
-            data=mover.left.
+            ahead=mover.left.next
+            mover.left.next=right
+            right.next=ahead
+            mover.left=ahead
+        if(count==int(self.size/2)):
+            self.tail=right
+            self.tail.next=None
+
 
     def display(self):
         temp=self.head
@@ -173,7 +180,8 @@ print('\n---------')
 # ll.reversePI()
 # ll.reverseDR()
 # ll.reverseDR()
-ll.reversePR()
+# ll.reversePR()
+ll.fold()
 ll.display()
 
 print('\n---------\n')
