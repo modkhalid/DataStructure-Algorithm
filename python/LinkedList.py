@@ -153,7 +153,7 @@ class LinkedList:
         if self.size is 0:
             print("empty LinkedList")
             return
-        nm=getNodeAt(self.size-2)
+        nm=self.getNodeAt(self.size-2)
         data=self.tail.data
         self.tail=nm
         self.tail.next=None
@@ -169,9 +169,10 @@ class LinkedList:
         elif idx is self.size-1:
             removeLast()
         else:
-            nm=getNodeAt(idx-1)
+            nm=self.getNodeAt(idx-1)
             data=nm.next.data
-            
+            nm.next=nm.next.next
+            self.size-=1
             return data
 
 
@@ -196,3 +197,8 @@ ll.addFirst(3)
 ll.addFirst(2)
 ll.addAt(2,4)
 ll.display()
+print('\n---------')
+print(ll.removeAt(2))
+ll.display()
+
+print('\n---------\n')
