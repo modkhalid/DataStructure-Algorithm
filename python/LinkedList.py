@@ -113,6 +113,30 @@ class LinkedList:
 
 
 
+    def reverseDR(self):
+        self.__reverseDR(self.head,self.head,0)
+    def __reverseDR(self,left,right,count):
+        if right is None:
+            return left
+        temp=self.__reverseDR(left,right.next,count+1)
+
+        if count > self.size/2:
+            data=temp.data
+            temp.data=right.data
+            right.data=data
+        return temp.next
+
+    def reversePR(self):
+        self.__reversePR(self.head,self.head)
+        temp=self.head
+        self.head=self.tail
+        self.tail=temp
+        self.tail.next=None
+    def __reversePR(self,prev,curr):
+        if curr is None:
+            return
+        self.__reversePR(curr,curr.next)
+        curr.next=prev
 
     def display(self):
         temp=self.head
@@ -132,8 +156,11 @@ ll.addAt(2,4)
 ll.display()
 print('\n---------')
 # print(ll.removeAt(2))
-ll.reversePI()
-ll.reversePI()
+# ll.reversePI()
+# ll.reversePI()
+# ll.reverseDR()
+# ll.reverseDR()
+ll.reversePR()
 ll.display()
 
 print('\n---------\n')
