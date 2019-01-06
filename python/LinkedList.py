@@ -138,6 +138,19 @@ class LinkedList:
         self.__reversePR(curr,curr.next)
         curr.next=prev
 
+    class Mover:
+        def __init__(self,node):
+            self.left=node
+    def fold(self):
+        self.__fold(Mover(self.head),self.head,0)
+
+    def __fold(self,mover,right,count):
+        if right is None:
+            return
+        self.__fold(mover,right.next,count+1)
+        if(count>self.size/2):
+            data=mover.left.
+
     def display(self):
         temp=self.head
         while temp is not None:
