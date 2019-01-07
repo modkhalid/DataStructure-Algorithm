@@ -157,7 +157,7 @@ class LinkedList:
             self.tail=right
             self.tail.next=None
 
-
+    def 
     def display(self):
         temp=self.head
         while temp is not None:
