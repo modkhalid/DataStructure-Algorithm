@@ -8,6 +8,13 @@ public class lv1 {
 		System.out.println(x);
 		fun(--x);
 	}
+	static int mult (int a,int b) {
+		if(b==0)
+			return 0;
+		if(b%2==1)
+			return mult(2*a,b/2)+a;
+		return mult(2*a,b/2);
+	}
 	public  static int max(int arr[],int n) {
 		if(n==1)
 			return arr[0];
@@ -19,7 +26,8 @@ public class lv1 {
 	}
 	public static void main(String[] args) {
 //		fun(3);
-		int arr[]= {1,2,3,4,5,6};
-		System.out.println(max(arr,6));
+//		int arr[]= {1,2,3,4,5,6};
+//		System.out.println(max(arr,6));
+		System.out.println(mult(4, 5));
 	}
 }
