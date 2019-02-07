@@ -34,11 +34,24 @@ public class lv1 {
 			return x;
 		return arr[n-1];
 	}
+	
+	public static void pattern(int row,int col,int n) {
+		if(row==n+1)
+			return;
+		if(col==n+1) {
+			System.out.println();
+			pattern(row+1, 0, n);
+			return;
+		}
+		System.out.print("* ");
+		pattern(row, col+1, n);
+	}
 	public static void main(String[] args) {
 //		fun(3);
 //		int arr[]= {1,2,3,4,5,6};
 //		System.out.println(max(arr,6));
 //		System.out.println(mult(4, 5));
-		System.out.println(power(2,3));
+//		System.out.println(power(2,3));
+		pattern(0, 0, 4);
 	}
 }
