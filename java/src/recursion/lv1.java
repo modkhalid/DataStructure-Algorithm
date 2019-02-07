@@ -15,6 +15,16 @@ public class lv1 {
 			return mult(2*a,b/2)+a;
 		return mult(2*a,b/2);
 	}
+	
+	static int power(int a,int b) {
+		if(b==0) {
+			return 1;
+		}
+		if(b%2==0) {
+			return power(2*a,b/2);
+		}
+		return power(2*a,b/2)*a;
+	}
 	public  static int max(int arr[],int n) {
 		if(n==1)
 			return arr[0];
@@ -28,6 +38,7 @@ public class lv1 {
 //		fun(3);
 //		int arr[]= {1,2,3,4,5,6};
 //		System.out.println(max(arr,6));
-		System.out.println(mult(4, 5));
+//		System.out.println(mult(4, 5));
+		System.out.println(power(2,3));
 	}
 }
