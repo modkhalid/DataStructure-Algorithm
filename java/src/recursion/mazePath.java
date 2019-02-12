@@ -34,7 +34,25 @@ public class mazePath {
 		}
 		return mr;
 	}
+	
+	
+	public static int NumberPath(int cr,int cc,int er,int ec) {
+		if(cr==er && cc==ec) {
+			return 1;
+			
+		}
+		if(cr>er || cc>ec) {
+			return 0;
+		}
+		int res=0;
+		res+=NumberPath(cr, cc+1, er, ec);
+		res+=NumberPath(cr+1, cc, er, ec);
+		res+=NumberPath(cr+1, cc+1, er, ec);
+		return res;
+		
+	}
 	public static void main(String[] args) {
 		System.out.println(mazePath(0, 0, 2, 2));
+		System.out.println(NumberPath(0, 0, 2, 2));
 	}
 }
