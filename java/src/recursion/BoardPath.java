@@ -24,7 +24,24 @@ public class BoardPath {
 		}
 		return mr;
 	}
+	
+	
+	public static int countPath(int si,int ei) {
+		if(ei==si) {
+			return 1;
+		}
+		if(si>ei) {
+			return 0;
+		}
+		int res=0;
+		for(int i=1;i<=6;i++) {
+			res+=countPath(i+si,ei);
+		}
+		return res;
+		
+	}
 	public static void main(String[] args) {
-		System.out.println(path(0,6));
+		System.out.println(path(0,3));
+		System.out.println(countPath(0,3));
 	}
 }
