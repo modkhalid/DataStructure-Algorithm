@@ -47,6 +47,6 @@ public class KeyBoard {
 		
 	}
 	public static void main(String[] args) {
-		System.out.println(keyBordDisplay("45"));
+		System.out.println(keyBordDisplay("456"));
 	}
 }
