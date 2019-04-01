@@ -204,11 +204,38 @@ class PatternDeveloper {
 		}
 	}
 
+	public void l17() {
+		int space =this.n;
+		int ospace=0;
+		int n=this.n*2-1;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < this.n; j++) {
+				if(j<space)
+					System.out.print("*");
+				else
+					System.out.print(" ");
+			}
+			for (int j = 0; j < this.n; j++) {
+				if(j<ospace)
+					System.out.print(" ");
+				else
+					System.out.print("*");
+			}
+			System.out.println();
+			if(!(i<n/2)) {
+				space++;
+				ospace--;
+			}else {
+				space--;
+				ospace++;
+			}
+		}
+	}
 }
 
 public class Pattern {
 	public static void main(String[] args) {
-		PatternDeveloper pd = new PatternDeveloper(5);
+		PatternDeveloper pd = new PatternDeveloper(13);
 //		pd.squareFrame();
 //		pd.printReverseNumber(6589);
 //		pd.l11();
@@ -216,6 +243,8 @@ public class Pattern {
 //		pd.l9();
 //		pd.l13();
 //		pd.l14();
-		pd.l15();
+//		pd.l15();
+		pd.l17();
 	}
 }
+
