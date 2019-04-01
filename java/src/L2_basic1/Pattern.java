@@ -21,12 +21,22 @@ class PatternDeveloper{
 			System.out.println();
 		}
 	}
+	
+	
+	public void l2() {
+		for(int i=0;i<this.n;i++) {
+			for(int j=i;j<this.n;j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
 }
 
 
 public class Pattern {
 	public static void main(String[] args) {
 		PatternDeveloper pd=new PatternDeveloper();
-		pd.l1();
+		pd.l2();
 	}
 }
