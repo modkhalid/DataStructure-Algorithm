@@ -1,5 +1,7 @@
 package L2_basic1;
 
+import java.util.Scanner;
+
 class PatternDeveloper {
 //	constructor
 	private int n;
@@ -131,129 +133,129 @@ class PatternDeveloper {
 	}
 
 	public void l13() {
-		int counter=0;
-		int n=this.n*2-1;
-		
+		int counter = 0;
+		int n = this.n * 2 - 1;
+
 		for (int i = 0; i < n; i++) {
-			for(int j=0;j<=counter;j++) {
+			for (int j = 0; j <= counter; j++) {
 				System.out.print("*");
 			}
 			System.out.println();
-			
-			if(i<n/2)
+
+			if (i < n / 2)
 				counter++;
 			else
 				counter--;
 		}
 	}
-	
+
 	void l14() {
-		int counter=n-1;
-		int n=this.n*2-1;
-		
+		int counter = n - 1;
+		int n = this.n * 2 - 1;
+
 		for (int i = 0; i < n; i++) {
-			for(int j=0;j<=counter;j++) {
+			for (int j = 0; j <= counter; j++) {
 				System.out.print("*");
 			}
 			System.out.println();
-			
-			if(!(i<n/2))
+
+			if (!(i < n / 2))
 				counter++;
 			else
 				counter--;
 		}
 	}
-	
+
 	public void l14b() {
-		int space=n-1;
-		int n=this.n*2-1;
+		int space = n - 1;
+		int n = this.n * 2 - 1;
 		for (int i = 0; i < n; i++) {
-			for(int j=0;j<this.n;j++) {
-				if(space>j) {
+			for (int j = 0; j < this.n; j++) {
+				if (space > j) {
 					System.out.print(" ");
-				}else {
+				} else {
 					System.out.print("*");
 				}
 			}
-			if(i<n/2) {
+			if (i < n / 2) {
 				space--;
-			}else {
+			} else {
 				space++;
 			}
 			System.out.println();
-				
+
 		}
 	}
-	
+
 	public void l15() {
-		int space =0;
-		int n=this.n*2-1;
+		int space = 0;
+		int n = this.n * 2 - 1;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < this.n; j++) {
-				if(space>j)
+				if (space > j)
 					System.out.print("  ");
 				else
 					System.out.print("*");
 			}
 			System.out.println();
-			if(i<n/2) {
+			if (i < n / 2) {
 				space++;
-			}else {
+			} else {
 				space--;
 			}
 		}
 	}
 
 	public void l17() {
-		int space =this.n;
-		int ospace=0;
-		int n=this.n*2-1;
+		int space = this.n;
+		int ospace = 0;
+		int n = this.n * 2 - 1;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < this.n; j++) {
-				if(j<space)
+				if (j < space)
 					System.out.print("*");
 				else
 					System.out.print(" ");
 			}
 			for (int j = 0; j < this.n; j++) {
-				if(j<ospace)
+				if (j < ospace)
 					System.out.print(" ");
 				else
 					System.out.print("*");
 			}
 			System.out.println();
-			if(!(i<n/2)) {
+			if (!(i < n / 2)) {
 				space++;
 				ospace--;
-			}else {
+			} else {
 				space--;
 				ospace++;
 			}
 		}
 	}
-	
+
 	public void pascals() {
-		System.out.println();
-		int space=n-1;
-		int counter=0;
-		for(int i=0;i<n;i++) {
-			boolean flag=false;
-			for(int j=0;j<n;j++) {
-				if(j<space) {
+//		System.out.println();
+		int space = n - 1;
+		int counter = 0;
+		for (int i = 0; i < n; i++) {
+			boolean flag = false;
+			for (int j = 0; j < n; j++) {
+				if (j < space) {
 					System.out.print("  ");
-				}else {
-					if(!flag) {
-						System.out.print(i+1+" ");
-						flag=true;
-					}else {
-						System.out.print(0+" ");
+				} else {
+					if (!flag) {
+						System.out.print(i + 1 + " ");
+						flag = true;
+					} else {
+						System.out.print(0 + " ");
 					}
 				}
 			}
-			for(int j=0;j<counter;j++) {
-				if(j==counter-1) {
-					System.out.println(i+1+" ");
-				}else {
+			for (int j = 0; j < counter; j++) {
+				if (j == counter - 1) {
+					System.out.println(i + 1 + " ");
+				} else {
 					System.out.print("0 ");
 				}
 			}
@@ -261,7 +263,26 @@ class PatternDeveloper {
 			System.out.println();
 			space--;
 		}
-		
+
+	}
+	
+	
+	public void rotate() {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int r=sc.nextInt();
+		int ans=n;
+		int counter=0;
+		while(n!=0) {
+			counter++;
+			n/=10;
+		}
+		r=r%counter;
+//		System.out.println(r);
+		for (int i = 0; i < r; i++) {
+			ans=((ans%10)*(int)Math.pow(10, counter-1))+ans/10;
+		}
+		System.out.println(ans);
 	}
 }
 
@@ -277,7 +298,7 @@ public class Pattern {
 //		pd.l14();
 //		pd.l15();
 //		pd.l17();
-		pd.pascals();
+//		pd.pascals();
+		pd.rotate();
 	}
 }
-
