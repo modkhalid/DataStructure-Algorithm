@@ -72,13 +72,44 @@ class PatternDeveloper{
 		}
 	}
 	
+	public void printReverseNumber(int n) {
+		int ans=0,rem;
+		while(n!=0) {
+			rem=n%10;
+			ans=ans*10+rem;
+			n=n/10;
+		}
+		System.out.println(ans);
+	}
+	
+	public void l11() {
+		int counter=n-1;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if(counter>j)
+					System.out.print(" ");
+				else
+					if(j!=n-1) 
+						System.out.print("* ");
+					else
+						System.out.print("*");
+						
+			}
+			System.out.println();
+			counter--;
+		}
+	}
+	
 	
 }
 
 
 public class Pattern {
 	public static void main(String[] args) {
-		PatternDeveloper pd=new PatternDeveloper();
-		pd.squareFrame();
+		PatternDeveloper pd=new PatternDeveloper(5);
+//		pd.squareFrame();
+//		pd.printReverseNumber(6589);
+		pd.l11();
+
 	}
 }
