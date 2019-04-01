@@ -146,6 +146,44 @@ class PatternDeveloper {
 				counter--;
 		}
 	}
+	
+	void l14() {
+		int counter=n-1;
+		int n=this.n*2-1;
+		
+		for (int i = 0; i < n; i++) {
+			for(int j=0;j<=counter;j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+			
+			if(!(i<n/2))
+				counter++;
+			else
+				counter--;
+		}
+	}
+	
+	public void l14b() {
+		int space=n-1;
+		int n=this.n*2-1;
+		for (int i = 0; i < n; i++) {
+			for(int j=0;j<this.n;j++) {
+				if(space>j) {
+					System.out.print(" ");
+				}else {
+					System.out.print("*");
+				}
+			}
+			if(i<n/2) {
+				space--;
+			}else {
+				space++;
+			}
+			System.out.println();
+				
+		}
+	}
 
 }
 
@@ -157,6 +195,7 @@ public class Pattern {
 //		pd.l11();
 //		pd.l6();
 //		pd.l9();
-		pd.l13();
+//		pd.l13();
+		pd.l14b();
 	}
 }
