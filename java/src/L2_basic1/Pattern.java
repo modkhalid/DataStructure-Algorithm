@@ -100,7 +100,19 @@ class PatternDeveloper{
 		}
 	}
 	
-	
+	public void l6() {
+		int space=0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if(space>j)
+					System.out.print("  ");
+				else
+					System.out.print("*");
+			}
+			space++;
+			System.out.println();
+		}
+	}
 }
 
 
@@ -109,7 +121,7 @@ public class Pattern {
 		PatternDeveloper pd=new PatternDeveloper(5);
 //		pd.squareFrame();
 //		pd.printReverseNumber(6589);
-		pd.l11();
-
+//		pd.l11();
+		pd.l6();
 	}
 }
