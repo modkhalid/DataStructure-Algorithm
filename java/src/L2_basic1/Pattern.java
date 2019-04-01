@@ -46,6 +46,20 @@ class PatternDeveloper{
 		}
 	}
 	
+	public void l4() {
+		int counter=0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if(counter>j) {
+					System.out.print(" ");
+				}else
+					System.out.print("*");
+			}
+			System.out.println();
+			counter++;
+		}
+	}
+	
 	
 }
 
@@ -53,6 +67,6 @@ class PatternDeveloper{
 public class Pattern {
 	public static void main(String[] args) {
 		PatternDeveloper pd=new PatternDeveloper();
-		pd.l3();
+		pd.l4();
 	}
 }
