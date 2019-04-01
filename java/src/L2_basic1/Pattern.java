@@ -184,6 +184,25 @@ class PatternDeveloper {
 				
 		}
 	}
+	
+	public void l15() {
+		int space =0;
+		int n=this.n*2-1;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < this.n; j++) {
+				if(space>j)
+					System.out.print("  ");
+				else
+					System.out.print("*");
+			}
+			System.out.println();
+			if(i<n/2) {
+				space++;
+			}else {
+				space--;
+			}
+		}
+	}
 
 }
 
@@ -196,6 +215,7 @@ public class Pattern {
 //		pd.l6();
 //		pd.l9();
 //		pd.l13();
-		pd.l14b();
+//		pd.l14();
+		pd.l15();
 	}
 }
