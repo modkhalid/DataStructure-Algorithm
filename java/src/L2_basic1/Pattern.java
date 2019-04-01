@@ -113,6 +113,24 @@ class PatternDeveloper{
 			System.out.println();
 		}
 	}
+	
+	public void l9() {
+		int counter=n-1;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if(counter>j)
+					System.out.print(" ");
+				else
+					if(j!=n-1) 
+						System.out.print("**");
+					else
+						System.out.print("*");
+						
+			}
+			System.out.println();
+			counter--;
+		}
+	}
 }
 
 
@@ -122,6 +140,7 @@ public class Pattern {
 //		pd.squareFrame();
 //		pd.printReverseNumber(6589);
 //		pd.l11();
-		pd.l6();
+//		pd.l6();
+		pd.l9();
 	}
 }
