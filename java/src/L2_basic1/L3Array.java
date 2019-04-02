@@ -9,7 +9,9 @@ public class L3Array {
 		int arr[] = { 1, 2, 4, 5, 6, 7, 8, 9 };
 		int sarr[] = {3, 4, 5, 7, 9, 11 };
 //		System.out.println(Intersection(arr, sarr));
-		System.out.println(sum(arr, sarr));
+//		System.out.println(sum(arr, sarr));
+//		System.out.println();
+		printpallindrone("nitin");
 	}
 
 	public static ArrayList<Integer> Intersection(int arr[], int sarr[]) {
@@ -56,4 +58,30 @@ public class L3Array {
 
 		return ans;
 	}
+	
+	public static boolean isPalindrone(String str) {
+		int left=0;
+		int right=str.length()-1;
+		while(left<right) {
+			if(str.charAt(left)!=str.charAt(right)) {
+				return false;
+			}	
+			left++;
+			right--;
+		}
+		return true;
+	}
+	
+	public static void printpallindrone(String str) {
+		for (int i = 0; i < str.length();i++) {
+			for (int j = i+1; j <= str.length(); j++) {
+				String ss=str.substring(i, j);
+				if(isPalindrone(ss))
+					System.out.println(ss);
+			}
+		}
+	}
 }
+
+
+
