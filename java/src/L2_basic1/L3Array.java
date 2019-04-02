@@ -11,7 +11,20 @@ public class L3Array {
 //		System.out.println(Intersection(arr, sarr));
 //		System.out.println(sum(arr, sarr));
 //		System.out.println();
-		printpallindrone("nitin");
+//		printpallindrone("nitin");
+//		StringBuilder sb=new StringBuilder();
+//		sb.append("modkhalid");
+//		System.out.println(sb);
+//		char str[]= {'h','a','r'};
+//		sb.append(str);
+//		System.out.println(sb);
+//		sb.insert(3, "mod");
+//		System.out.println(sb);
+//		sb.deleteCharAt(3);
+//		System.out.println(sb);
+		System.out.println(power(1,0));
+//		sb.re
+		
 	}
 
 	public static ArrayList<Integer> Intersection(int arr[], int sarr[]) {
@@ -80,6 +93,13 @@ public class L3Array {
 					System.out.println(ss);
 			}
 		}
+	}
+	
+	
+	public static long power(int a,int b){
+		if(b==0)
+			return 1;
+		return a*power(a,b-1);
 	}
 }
 
