@@ -86,9 +86,17 @@ public class April11 {
 		System.out.print(spelling[n%10]+" ");
 	}
 	
+	public static int linearSearch(int arr[],int item,int vind) {
+		if(vind>=arr.length)
+			return -1;
+		if(arr[vind]==item)
+			return vind;
+		return linearSearch(arr, item, vind+1);
+	}
+	
 	public static void main(String[] args) {
 //		TOH(64, 'A', 'B', 'C');
-//		int arr[]= {1,4,5,6,78,98};
+		int arr[]= {1,4,5,6,78,98};
 //		System.out.println(issorted(arr, arr.length-1));
 //		System.out.println(powerLogN(2, 9));
 //		IncDec(5);
@@ -98,6 +106,7 @@ public class April11 {
 //		System.out.println(a);
 //		System.out.println(getInt(str, str.length()-1));
 //		System.out.println(Bricks4N(9));
-		F2048(2048);
+//		F2048(2048);
+		System.out.println(linearSearch(arr, 78, 0));
 	}
 }
