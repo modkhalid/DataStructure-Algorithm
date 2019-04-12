@@ -1,9 +1,7 @@
 package recursion;
 
 public class April11 {
-	static String spelling[] = {   "ZERO", "ONE", "TWO","THREE", 
-							"FOUR", "FIIVE", "SIX",
-							"SEVEN", "EIGHT", "NINE" };
+	static String spelling[] = { "ZERO", "ONE", "TWO", "THREE", "FOUR", "FIIVE", "SIX", "SEVEN", "EIGHT", "NINE" };
 
 	public static void TOH(int n, char a, char b, char c) {
 		if (n > 0) {
@@ -80,23 +78,70 @@ public class April11 {
 	}
 
 	public static void F2048(int n) {
-		if(n==0)
-			return ;
-		F2048(n/10);
-		System.out.print(spelling[n%10]+" ");
+		if (n == 0)
+			return;
+		F2048(n / 10);
+		System.out.print(spelling[n % 10] + " ");
 	}
-	
-	public static int linearSearch(int arr[],int item,int vind) {
-		if(vind>=arr.length)
+
+	public static int linearSearch(int arr[], int item, int vind) {
+		if (vind >= arr.length)
 			return -1;
-		if(arr[vind]==item)
+		if (arr[vind] == item)
 			return vind;
-		return linearSearch(arr, item, vind+1);
+		return linearSearch(arr, item, vind + 1);
 	}
-	
+
+	public static int BinarySearch(int arr[], int item, int low, int high) {
+		if (low > high) {
+			return -1;
+		}
+		int r = low + (-low + high) / 2;
+		if (arr[r] == item)
+			return r;
+		if (arr[r] > item)
+			return BinarySearch(arr, item, low, r - 1);
+		return BinarySearch(arr, item, r + 1, high);
+	}
+
+	public static void swap(int a, int b) {
+		int t = a;
+		a = b;
+		b = t;
+	}
+
+	public static void BubbleSort(int arr[], int n) {
+		if (n == 1)
+			return;
+		for (int i = 0; i < n - 1; i++) {
+			if (arr[i] > arr[i + 1]) {
+				int t = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = t;
+			}
+		}
+		BubbleSort(arr, n - 1);
+	}
+
+	public static void bubbleSort2(int arr[], int j, int n) {
+		if (n == 1)
+			return;
+		if (j == n - 1) {
+			bubbleSort2(arr, 0, n - 1);
+			return;
+		}
+		if (arr[j] > arr[j + 1]) {
+			int t = arr[j];
+			arr[j] = arr[j + 1];
+			arr[j + 1] = t;
+		}
+		bubbleSort2(arr, j + 1, n);
+		return;
+	}
+
 	public static void main(String[] args) {
 //		TOH(64, 'A', 'B', 'C');
-		int arr[]= {1,4,5,6,78,98};
+		int arr[] = { 1, 4, 6, 785, 5, 6, 78, 98 };
 //		System.out.println(issorted(arr, arr.length-1));
 //		System.out.println(powerLogN(2, 9));
 //		IncDec(5);
@@ -107,6 +152,11 @@ public class April11 {
 //		System.out.println(getInt(str, str.length()-1));
 //		System.out.println(Bricks4N(9));
 //		F2048(2048);
-		System.out.println(linearSearch(arr, 78, 0));
+//		System.out.println(linearSearch(arr, 78, 0));
+//		System.out.println(BinarySearch(arr, 9878, 0, arr.length-1));
+		bubbleSort2(arr, 0, arr.length);
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
 	}
 }
