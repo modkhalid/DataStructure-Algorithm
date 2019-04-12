@@ -4,27 +4,27 @@ import java.util.ArrayList;
 
 public class April12 {
 	public static String getCode(char ch) {
-		if(ch=='1') 
+		if (ch == '1')
 			return "abc";
-		else if(ch=='2') 
+		else if (ch == '2')
 			return "def";
-		else if(ch=='3') 
+		else if (ch == '3')
 			return "ghi";
-		else if(ch=='4') 
+		else if (ch == '4')
 			return "jkl";
-		else if(ch=='5') 
+		else if (ch == '5')
 			return "mno";
-		else if(ch=='6') 
+		else if (ch == '6')
 			return "pqr";
-		else if(ch=='7') 
+		else if (ch == '7')
 			return "stu";
-		else if(ch=='8') 
+		else if (ch == '8')
 			return "vwx";
-		else if(ch=='9') 
+		else if (ch == '9')
 			return "yz";
-		else if(ch=='0') 
+		else if (ch == '0')
 			return "@#";
-		else 
+		else
 			return "";
 	}
 
@@ -147,17 +147,16 @@ public class April12 {
 		}
 	}
 
-	public void printSeq(String str,String ans) {
-		if(str.length()==0) {
-			System.out.print(ans+" ");
+	public void printSeq(String str, String ans) {
+		if (str.length() == 0) {
+			System.out.print(ans + " ");
 			return;
 		}
-		
-		
+
 		this.printSeq(str.substring(1), ans);
-		this.printSeq(str.substring(1), ans+str.charAt(0));
+		this.printSeq(str.substring(1), ans + str.charAt(0));
 	}
-	
+
 	public int partition(int arr[], int low, int high) {
 		int pivat = arr[high];
 		int j = low - 1;
@@ -177,58 +176,108 @@ public class April12 {
 		return j;
 	}
 
-	public ArrayList<String> ss(String str){
-		if(str.length()==0)
-		{
-			ArrayList<String> br=new ArrayList<String>();
+	public ArrayList<String> ss(String str) {
+		if (str.length() == 0) {
+			ArrayList<String> br = new ArrayList<String>();
 			br.add("");
 			return br;
 		}
-		
-		ArrayList<String> mr=new ArrayList<>();
-		ArrayList<String> rr=this.ss(str.substring(1));
-		for(String s:rr) {
+
+		ArrayList<String> mr = new ArrayList<>();
+		ArrayList<String> rr = this.ss(str.substring(1));
+		for (String s : rr) {
 			mr.add(s);
-			mr.add(str.charAt(0)+s);
+			mr.add(str.charAt(0) + s);
 		}
 		return mr;
-		
+
 	}
-	
-	public ArrayList<String> keypad(String str){
-		if(str.length()==0) {
-			ArrayList<String> br=new ArrayList<String>();
+
+	public ArrayList<String> keypad(String str) {
+		if (str.length() == 0) {
+			ArrayList<String> br = new ArrayList<String>();
 			br.add("");
 			return br;
 		}
-		ArrayList<String> mr=new ArrayList<String>();
-		ArrayList<String> rr=keypad(str.substring(1));
-		String s=getCode(str.charAt(0));
-		for(int i=0;i<s.length();i++) {
-			for(String ss:rr) {
-				mr.add(s.charAt(i)+ss);
+		ArrayList<String> mr = new ArrayList<String>();
+		ArrayList<String> rr = keypad(str.substring(1));
+		String s = getCode(str.charAt(0));
+		for (int i = 0; i < s.length(); i++) {
+			for (String ss : rr) {
+				mr.add(s.charAt(i) + ss);
 			}
 		}
 		return mr;
 	}
-	public ArrayList<String> permutation(String str){
-		if(str.length()==0) {
-			ArrayList<String> br=new ArrayList<String>();
+
+	public ArrayList<String> permutation(String str) {
+		if (str.length() == 0) {
+			ArrayList<String> br = new ArrayList<String>();
 			br.add("");
 			return br;
 		}
-		
-		ArrayList<String> mr=new ArrayList<String>();
-		ArrayList<String> rr=permutation(str.substring(1));
-		char ch=str.charAt(0);
-		for(String s:rr) {
+
+		ArrayList<String> mr = new ArrayList<String>();
+		ArrayList<String> rr = permutation(str.substring(1));
+		char ch = str.charAt(0);
+		for (String s : rr) {
 			for (int i = 0; i <= s.length(); i++) {
-				mr.add(s.substring(0, i)+ch+s.substring(i));
+				mr.add(s.substring(0, i) + ch + s.substring(i));
 			}
 		}
 		return mr;
 	}
-	
+
+	public int nQueen(boolean board[][], int row, String str) {
+		if(row==board[0].length) {
+			System.out.println(str);
+			
+			return 1;
+		}
+		int res=0;
+		
+		for (int col = 0; col < board[0].length; col++) {
+			if(isSafeQueen(board, row, col)) {
+				board[row][col]=true;
+				res+=nQueen(board, row+1, str+"{ "+row+" "+col+" }");
+				board[row][col]=false;
+			}
+		}
+		return res;
+	}
+
+	public boolean isSafeQueen(boolean board[][], int row, int col) {
+		int r = row;
+		int c = col;
+//		cheching vertically
+		while (r >= 0) {
+			if (board[r][c]) {
+				return false;
+			}
+			r--;
+		}
+
+		r = row;
+//		checking dioganal left
+		while (c >= 0 && r >= 0) {
+			if (board[r][c]) {
+				return false;
+			}
+			r--;
+			c--;
+		}
+		r=row;c=col;
+		while (c < board[0].length && r >= 0) {
+			if (board[r][c]) {
+				return false;
+			}
+			r--;
+			c++;
+		}
+
+		return true;
+	}
+
 	public static void main(String[] args) {
 		April12 a = new April12();
 //		a.PDI(16);
@@ -246,6 +295,8 @@ public class April12 {
 //		a.printSeq("abc", "");
 //		System.out.println(a.ss("abc"));
 //		System.out.println(a.keypad("431"));
-		System.out.println(a.permutation("abc"));
+//		System.out.println(a.permutation("abc"));
+		int n=5;
+		System.out.println(a.nQueen(new boolean[n][n], 0, ""));
 	}
 }
