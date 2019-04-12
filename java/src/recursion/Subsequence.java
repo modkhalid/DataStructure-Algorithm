@@ -16,7 +16,7 @@ public class Subsequence {
 		ArrayList<String> rr=getSubsequence(ros);
 		for(String rrr:rr) {
 			mr.add(rrr);
-			mr.add((ch+0)+rrr);
+//			mr.add((ch+0)+rrr);
 			mr.add(ch+rrr);
 		}
 		return mr;
