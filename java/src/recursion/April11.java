@@ -176,13 +176,9 @@ public class April11 {
 			}	
 		}
 		
-//		return 0;
-//		++j;
 		int temp=arr[j];
 		arr[j]=pivat;
 		arr[high]=temp;
-		
-		
 		return j;
 	}
 
@@ -244,10 +240,10 @@ public class April11 {
 //		System.out.println(BinarySearch(arr, 9878, 0, arr.length-1));
 //		bubbleSort2(arr, 0, arr.length);
 //		mergeSort(arr, 0, arr.length - 1);
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.println("\n\n");
+//		for (int i = 0; i < arr.length; i++) {
+//			System.out.print(arr[i] + " ");
+//		}
+//		System.out.println("\n\n");
 		
 		quickSort(arr, 0, arr.length-1);
 		for (int i = 0; i < arr.length; i++) {
