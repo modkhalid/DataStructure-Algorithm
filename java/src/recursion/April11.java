@@ -1,7 +1,12 @@
 package recursion;
 
+/*
+ * all about the recursion
+ * April 11,12
+ */
+
 public class April11 {
-	static String spelling[] = { "ZERO", "ONE", "TWO", "THREE", "FOUR", "FIIVE", "SIX", "SEVEN", "EIGHT", "NINE" };
+	static String spelling[] = { "ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE" };
 
 	public static void TOH(int n, char a, char b, char c) {
 		if (n > 0) {
@@ -139,6 +144,89 @@ public class April11 {
 		return;
 	}
 
+	public static void mergeSort(int arr[], int low, int high) {
+		if (low < high) {
+			int mid = low + (high - low) / 2;
+			mergeSort(arr, low, mid);
+			mergeSort(arr, mid + 1, high);
+			merge(arr, low, mid, high);
+		}
+
+	}
+	
+	public static void quickSort(int arr[],int low,int high) {
+		if(low>high)
+			return;
+		int pi=partition(arr,low,high);
+		quickSort(arr, low, pi-1);
+		quickSort(arr, pi+1, high);
+	}
+
+	private static int partition(int[] arr, int low, int high) {
+		int pivat=arr[high];
+		int j=low;
+		for (int i = low; i < high; i++) {
+			if(arr[i]<pivat) {
+//				j++;
+				int temp=arr[j];
+				arr[j]=arr[i];
+				arr[i]=temp;
+				j++;
+				
+			}	
+		}
+		
+//		return 0;
+//		++j;
+		int temp=arr[j];
+		arr[j]=pivat;
+		arr[high]=temp;
+		
+		
+		return j;
+	}
+
+	private static void merge(int[] arr, int low, int mid, int high) {
+		int larr[] = new int[mid - low + 1];
+		int rarr[] = new int[high - mid];
+
+		for (int i = 0; i < larr.length; i++) {
+			larr[i] = arr[low + i];
+		}
+		for (int i = 0; i < rarr.length; i++) {
+			
+			rarr[i] = arr[mid + i + 1];
+		}
+
+		int lh = larr.length;
+		int rh = rarr.length;
+		int j = 0, k = 0, i = low;
+
+		while (j < lh && k < rh) {
+			if (larr[j] < rarr[k]) {
+				arr[i] = larr[j];
+				j++;
+			} else {
+				arr[i] = rarr[k];
+				k++;
+			}
+			i++;
+		}
+
+		while (j < lh) {
+			arr[i] = larr[j];
+			j++;
+			i++;
+		}
+
+		while (k < rh) {
+			arr[i] = rarr[k];
+			k++;
+			i++;
+		}
+
+	}
+
 	public static void main(String[] args) {
 //		TOH(64, 'A', 'B', 'C');
 		int arr[] = { 1, 4, 6, 785, 5, 6, 78, 98 };
@@ -154,7 +242,14 @@ public class April11 {
 //		F2048(2048);
 //		System.out.println(linearSearch(arr, 78, 0));
 //		System.out.println(BinarySearch(arr, 9878, 0, arr.length-1));
-		bubbleSort2(arr, 0, arr.length);
+//		bubbleSort2(arr, 0, arr.length);
+//		mergeSort(arr, 0, arr.length - 1);
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println("\n\n");
+		
+		quickSort(arr, 0, arr.length-1);
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");
 		}
