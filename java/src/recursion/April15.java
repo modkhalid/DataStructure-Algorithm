@@ -47,7 +47,8 @@ public class April15 {
 //			System.out.println(CountRemoveReplaceHi("this is khalidhi"));
 //			System.out.println(twins("AXAXA"));
 //		s();
-		System.out.println(CodesOfString("1125"));
+//		System.out.println(CodesOfString("1125"));
+		System.out.println(ObedientString("aaaaaaaaabbabbaab", 0));
 	}
 
 	public static String MoveXEnd(String str) {
@@ -72,16 +73,14 @@ public class April15 {
 			return br;
 		}
 		ArrayList<String> mr = new ArrayList<String>();
-		
-		
-		char c=(char)( Integer.parseInt(str.substring(0,1))+96);
+
+		char c = (char) (Integer.parseInt(str.substring(0, 1)) + 96);
 		System.out.println(c);
-		ArrayList<String> rr=CodesOfString(str.substring(1));
+		ArrayList<String> rr = CodesOfString(str.substring(1));
 		for (String rrr : rr) {
 			mr.add(c + rrr);
 		}
-		
-		
+
 		if (str.length() >= 2) {
 			char ch = (char) (Integer.parseInt(str.substring(0, 2)) + 97);
 			rr = CodesOfString(str.substring(2));
@@ -105,6 +104,38 @@ public class April15 {
 			return 1 + CountRemoveReplaceHi(str.substring(2));
 		} else {
 			return CountRemoveReplaceHi(str.substring(1));
+		}
+	}
+
+	public static boolean ObedientString(String str, int count) {
+		if (count == 0 && str.charAt(0) != 'a')
+			return false;
+
+		if (str.length() == 0) {
+			return true;
+		}
+
+		char ch = str.charAt(0);
+		if (ch == 'a') {
+			if (str.length() == 1)
+				return true;
+			if (str.length() >= 2 && str.substring(1, 2).equals("a")) {
+				return ObedientString(str.substring(1), 1);
+			}
+			if (str.length() >= 3 && str.substring(1, 3).equals("bb")) {
+				return ObedientString(str.substring(1), 1);
+			}
+			return false;
+		} else if (str.length() >= 2 && str.substring(0, 2).equals("bb")) {
+			if (str.length() == 2)
+				return true;
+			if (str.charAt(2) == 'a') {
+				return ObedientString(str.substring(2), 1);
+			}
+			return false;
+
+		} else {
+			return false;
 		}
 	}
 
