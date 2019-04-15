@@ -314,6 +314,26 @@ public class April13 {
 	}
 	
 	
+	public static void perDic(String str,String ans,String ques) {
+		if(str.length()==0) {
+			if(!ans.equals(ques)) {
+				System.out.println(ans);
+			}
+			return;
+		}
+		char com=str.charAt(0);
+		for (int i = 0; i < str.length(); i++) {
+			if(str.charAt(i)<com) {
+				continue;
+			}else {
+				char ch=str.charAt(i);
+				String ros=str.substring(0,i)+str.substring(i+1);
+				
+				perDic(ros, ans+ch,ques);
+			}
+		}
+	}
+	
 //	public static int coin(int n, String ans) {
 //
 //		if (n == 0) {
@@ -331,12 +351,13 @@ public class April13 {
 //		permutationsRemoveDupliA2("aba", "");
 //		System.out.println(coin(2, ""));
 //		coin(100,"");
-		System.out.println(knight(new boolean[2][2], 0, 0, "", 0));
+//		System.out.println(knight(new boolean[2][2], 0, 0, "", 0));
 		
 
 //		Scanner sc=new  Scanner(System.in);
 //		int n=sc.nextInt();
 		
+		perDic("bac", "","bac");
 		/*
 		 * // April13 a = new April13(); // System.out.println(a.boardPath(0, 10)); //
 		 * System.out.println(a.mazePathD(0, 0, 2, 2)); //
