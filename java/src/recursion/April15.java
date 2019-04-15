@@ -48,7 +48,8 @@ public class April15 {
 //			System.out.println(twins("AXAXA"));
 //		s();
 //		System.out.println(CodesOfString("1125"));
-		System.out.println(ObedientString("aaaaaaaaabbabbaab", 0));
+//		System.out.println(ObedientString("aaaaaaaaabbabbaab", 0));
+		System.out.println(whatIsInParan("abc(45lk)45", ""));
 	}
 
 	public static String MoveXEnd(String str) {
@@ -139,6 +140,28 @@ public class April15 {
 		}
 	}
 
+	public static String whatIsInParan(String str,String ans) {
+		if(str.length()==0) {
+			return "";
+		}
+		if(str.charAt(0)==')') {
+			return ans;
+		}
+		String mans="";
+		char ch=str.charAt(0);
+		if(!ans.equals("")) {
+//			System.out.println(ans);
+			mans=whatIsInParan(str.substring(1), ans+ch);
+		}else {
+			if(ch=='(' && str.length()>=2) {
+				mans=whatIsInParan(str.substring(2), ans+str.charAt(1));
+			}else {
+				mans=whatIsInParan(str.substring(1), ans);
+			}
+		}
+		return mans;
+	}
+	
 	public static int twins(String str) {
 		if (str.length() == 2) {
 			return 0;
