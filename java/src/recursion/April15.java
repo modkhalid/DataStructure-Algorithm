@@ -49,7 +49,8 @@ public class April15 {
 //		s();
 //		System.out.println(CodesOfString("1125"));
 //		System.out.println(ObedientString("aaaaaaaaabbabbaab", 0));
-		System.out.println(whatIsInParan("abc(45lk)45", ""));
+//		System.out.println(whatIsInParan("abc(45lk)45", ""));
+		knight(new boolean[4][4], 0, 0, 0, "");
 	}
 
 	public static String MoveXEnd(String str) {
@@ -140,28 +141,70 @@ public class April15 {
 		}
 	}
 
-	public static String whatIsInParan(String str,String ans) {
-		if(str.length()==0) {
+	public static String whatIsInParan(String str, String ans) {
+		if (str.length() == 0) {
 			return "";
 		}
-		if(str.charAt(0)==')') {
+		if (str.charAt(0) == ')') {
 			return ans;
 		}
-		String mans="";
-		char ch=str.charAt(0);
-		if(!ans.equals("")) {
+		String mans = "";
+		char ch = str.charAt(0);
+		if (!ans.equals("")) {
 //			System.out.println(ans);
-			mans=whatIsInParan(str.substring(1), ans+ch);
-		}else {
-			if(ch=='(' && str.length()>=2) {
-				mans=whatIsInParan(str.substring(2), ans+str.charAt(1));
-			}else {
-				mans=whatIsInParan(str.substring(1), ans);
+			mans = whatIsInParan(str.substring(1), ans + ch);
+		} else {
+			if (ch == '(' && str.length() >= 2) {
+				mans = whatIsInParan(str.substring(2), ans + str.charAt(1));
+			} else {
+				mans = whatIsInParan(str.substring(1), ans);
 			}
 		}
 		return mans;
 	}
-	
+
+	public static void knight(boolean board[][], int row, int col, int pos, String ans) {
+		if(pos==board.length) {
+			System.out.print(ans+" ");
+			return;
+		}
+		
+		for(int c=col;c<board.length;c++) {
+			if(isSafe(board, row, c)) {
+				board[row][c]=true;
+				knight(board, row, c+1, pos+1, ans+"{"+row+"-"+c+"} ");
+				board[row][c]=false;
+			}
+		}
+		
+		for(int r=row+1;r<board.length;r++) {
+			for(int c=0;c<board.length;c++) {
+				if(isSafe(board, r, c)) {
+					board[row][c]=true;
+					knight(board, r, c+1, pos+1, ans+"{"+r+"-"+c+"} ");
+					board[row][c]=false;
+				}
+			}
+		}
+	}
+
+	public static boolean isSafe(boolean board[][], int row, int col) {
+		int r = row, c = col;
+		if (r - 1 >= 0 && c - 2 >= 0 && board[r - 1][c - 2])
+			return false;
+
+		if (r - 2 >= 0 && c - 1 >= 0 && board[r - 2][c - 1])
+			return false;
+
+		if (r - 1 >= 0 && c + 2 < board.length && board[r - 1][c + 2])
+			return false;
+
+		if (r - 2 >= 0 && c + 1 < board.length && board[r - 2][c + 1])
+			return false;
+
+		return true;
+	}
+
 	public static int twins(String str) {
 		if (str.length() == 2) {
 			return 0;
